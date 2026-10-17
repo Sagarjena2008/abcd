@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101713" />
+  <title>FitStart Gym | Train Strong. Live Well.</title>
+  <style>
+    :root{--bg:#0c120f;--panel:#141e18;--panel2:#1b2921;--green:#b7f36b;--green2:#8bcf3f;--text:#f4f7f2;--muted:#b2beb4;--line:#2c3b30;--danger:#ffb7a8}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit} button{cursor:pointer}
+    .container{width:min(1120px,92%);margin:auto}.topbar{position:sticky;top:0;z-index:10;background:#0c120feF;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:72px}.brand{font-weight:900;font-size:1.25rem;letter-spacing:.3px}.brand span{color:var(--green)}.navlinks{display:flex;gap:20px;align-items:center}.navlinks a{color:var(--muted);font-size:.94rem}.navlinks a:hover{color:var(--green)}.menu{display:none;background:none;border:1px solid var(--line);color:white;padding:7px 11px;border-radius:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--green);color:#14200f;font-weight:800;padding:12px 18px;border:0;border-radius:10px;transition:.2s}.btn:hover{background:#d0ffa0;transform:translateY(-1px)}.btn.secondary{background:transparent;border:1px solid #58714e;color:var(--text)}.btn.small{padding:8px 12px;font-size:.9rem}
+    .hero{padding:80px 0 62px;background:radial-gradient(ellipse at 80% 25%,#31492b55,transparent 45%),linear-gradient(135deg,#0c120f,#101a13)}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}.eyebrow{color:var(--green);font-size:.82rem;font-weight:900;text-transform:uppercase;letter-spacing:2px}.hero h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.02;margin:14px 0 22px;letter-spacing:-2px}.hero h1 em{font-style:normal;color:var(--green)}.hero p{color:var(--muted);max-width:590px;font-size:1.08rem}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.hero-card{background:linear-gradient(145deg,#26382a,#111914);border:1px solid #40543f;border-radius:24px;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 70px #0005}.hero-card .big{font-size:5rem}.hero-card h3{font-size:1.65rem;margin:0}.hero-card p{font-size:.98rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}.stat{padding:14px;background:#0b100d88;border:1px solid var(--line);border-radius:12px}.stat strong{display:block;color:var(--green);font-size:1.3rem}.stat span{color:var(--muted);font-size:.8rem}
+    section{padding:66px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.section-head h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.1;margin:8px 0}.section-head p{color:var(--muted);max-width:550px;margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}.card .icon{font-size:2rem}.card h3{margin:8px 0}.card p,.muted{color:var(--muted)}.tag{display:inline-block;border:1px solid #52664c;color:var(--green);padding:4px 9px;border-radius:999px;font-size:.78rem;font-weight:700}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}.panel h3{margin-top:0}.list{padding:0;list-style:none}.list li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--muted)}.list li:last-child{border-bottom:0}.list li::before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:.9rem;color:#dce6dc}.field input,.field select,.field textarea{width:100%;background:#0d1510;border:1px solid #354638;border-radius:9px;padding:11px 12px;color:var(--text);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green)}.hint{font-size:.82rem;color:var(--muted)}.notice{padding:12px 14px;border-radius:10px;background:#202c22;color:var(--muted);font-size:.9rem;border:1px solid var(--line)}.success{color:var(--green);font-weight:700}.error{color:var(--danger);font-weight:700}
+    .reminder-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}.reminder-list{margin-top:18px;display:grid;gap:10px}.reminder-item{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#0d1510;border:1px solid var(--line);padding:12px;border-radius:10px}.reminder-item small{display:block;color:var(--muted)}.delete{background:transparent;border:1px solid #64483f;color:#ffb7a8;border-radius:8px;padding:6px 10px}.timer{font-size:2rem;color:var(--green);font-weight:900;letter-spacing:1px}.footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}.footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.empty{color:var(--muted);font-size:.92rem}
+    @media(max-width:800px){.hero-grid,.two-col{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.hero{padding-top:52px}.navlinks{display:none;position:absolute;top:72px;left:0;right:0;background:#0c120f;padding:18px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav-cta{display:none}.section-head{display:block}.section-head p{margin-top:10px}}
+    @media(max-width:520px){.grid,.form-grid,.stats{grid-template-columns:1fr}.hero h1{letter-spacing:-1px}.hero-card{min-height:280px}.reminder-row{grid-template-columns:1fr}.container{width:91%}section{padding:48px 0}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="container">
+    <a class="brand" href="#home">FIT<span>START</span></a>
+    <button class="menu" id="menuBtn" aria-label="Toggle navigation">☰ Menu</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#features">Gym features</a><a href="#workouts">Workout & nutrition</a><a href="#registration">Join online</a><a href="#reminders">Reminders</a>
+    </div>
+    <a class="btn small nav-cta" href="#registration">Join the gym ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Your fitness journey starts here</div>
+        <h1>Train strong.<br><em>Live well.</em></h1>
+        <p>Welcome to FitStart Gym! Build healthy habits with friendly guidance, workout ideas, practical nutrition information, simple online registration, and reminders for your training routine.</p>
+        <div class="actions"><a class="btn" href="#registration">Register online →</a><a class="btn secondary" href="#workouts">Explore fitness guide</a></div>
+        <div class="stats">
+          <div class="stat"><strong>Any level</strong><span>Beginner to experienced</span></div>
+          <div class="stat"><strong>Your plan</strong><span>Build a steady routine</span></div>
+          <div class="stat"><strong>Stay ready</strong><span>Helpful reminders</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div><div class="big">🏋️</div><span class="tag">WELCOME TO THE TEAM</span></div>
+        <div><h3>One workout at a time.</h3><p>Start at your own pace, learn good technique, rest well, and celebrate consistent effort.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Inside the gym</div><h2>Everything you need to get started</h2></div><p>Replace these sample features with the real facilities, prices, photos, and opening hours of your gym.</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">🏃</div><h3>Cardio zone</h3><p>Treadmills, exercise bikes, and cardio sessions to support heart health and endurance.</p></article>
+        <article class="card"><div class="icon">🏋️</div><h3>Strength training</h3><p>Dumbbells, benches, resistance machines, and guidance on safe lifting technique.</p></article>
+        <article class="card"><div class="icon">🧑‍🏫</div><h3>Trainer support</h3><p>Learn equipment setup, warm-ups, exercise form, and how to progress gradually.</p></article>
+        <article class="card"><div class="icon">🧘</div><h3>Mobility & recovery</h3><p>Make time for mobility, cooldowns, sleep, hydration, and rest days.</p></article>
+        <article class="card"><div class="icon">🚿</div><h3>Member facilities</h3><p>Add details about changing rooms, showers, lockers, drinking water, and accessibility.</p></article>
+        <article class="card"><div class="icon">📱</div><h3>Easy membership</h3><p>Submit the registration form online and let gym staff contact you to confirm membership.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="workouts" style="background:#101813">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Learn & improve</div><h2>Workout, nutrition & time management</h2></div><p>Use this as general education, not as a personalised medical or diet plan. Ask a qualified trainer for exercise technique.</p></div>
+      <div class="two-col">
+        <div class="panel"><h3>Beginner workout structure</h3>
+          <ul class="list">
+            <li><strong>Warm up:</strong> 5–10 minutes of easy movement and dynamic mobility.</li>
+            <li><strong>Strength:</strong> Learn a few basic movements with light resistance and good form.</li>
+            <li><strong>Cardio:</strong> Choose walking, cycling, or another activity suited to your ability.</li>
+            <li><strong>Cool down:</strong> Slow down gradually and stretch gently if comfortable.</li>
+            <li><strong>Recovery:</strong> Schedule rest days and increase activity gradually.</li>
+          </ul>
+          <p class="hint">Stop if you feel sharp pain, dizziness, or unusual shortness of breath; seek appropriate help.</p>
+        </div>
+        <div class="panel"><h3>Food, protein & hydration</h3>
+          <ul class="list">
+            <li>Eat regular balanced meals with protein foods such as lentils, beans, dairy, eggs, tofu, fish, or meat if suitable for you.</li>
+            <li>Include carbohydrates, healthy fats, fruit, and vegetables to support overall energy and health.</li>
+            <li>Drink water regularly; needs vary with heat, activity, and individual health.</li>
+            <li>Protein powder is optional—not essential. Food can meet many people's needs.</li>
+            <li>Ask a registered dietitian or healthcare professional for individual advice, especially if you have a health condition.</li>
+          </ul>
+          <p class="hint">This site does not prescribe supplements, doses, or personalised nutrition targets.</p>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:16px">
+        <article class="card"><span class="tag">Example schedule</span><h3>Plan your session</h3><p>Choose a realistic time, allow travel and changing time, and keep your routine consistent rather than rushing.</p></article>
+        <article class="card"><span class="tag">Before training</span><h3>Bring your essentials</h3><p>Water bottle, comfortable clothes, suitable shoes, towel, and any items your gym requires.</p></article>
+        <article class="card"><span class="tag">After training</span><h3>Recover well</h3><p>Cool down, drink water, eat your usual balanced meal, and give yourself time to rest.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="registration">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Become a member</div><h2>Online gym registration</h2></div><p>Submit your details securely to the gym's registration system. Gym staff will contact you to confirm membership.</p></div>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Member details</h3>
+          <form id="registrationForm">
+            <div class="form-grid">
+              <div class="field"><label for="fullName">Full name *</label><input id="fullName" name="fullName" required maxlength="80" autocomplete="name" placeholder="Your full name"></div>
+              <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+              <div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" required pattern="[0-9+() .-]{8,20}" autocomplete="tel" placeholder="Your contact number"></div>
+              <div class="field"><label for="plan">Membership plan *</label><select id="plan" name="plan" required><option value="">Choose a plan</option><option>Monthly</option><option>Quarterly</option><option>Half-yearly</option><option>Yearly</option><option>Trial session</option></select></div>
+              <div class="field"><label for="startDate">Preferred start date</label><input id="startDate" name="startDate" type="date"></div>
+              <div class="field"><label for="preferredTime">Preferred workout time</label><select id="preferredTime" name="preferredTime"><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Flexible</option></select></div>
+              <div class="field full"><label for="goals">Fitness goals (optional)</label><textarea id="goals" name="goals" rows="3" maxlength="500" placeholder="For example: general fitness, strength, or learning gym basics"></textarea></div>
+              <div class="field full"><label><input type="checkbox" id="consent" name="consent" value="true" required style="width:auto"> I agree that the gym may contact me about this registration. *</label></div>
+              <div class="field full"><button class="btn" type="submit">Submit registration →</button><div id="formMessage" role="status" aria-live="polite"></div></div>
+            </div>
+          </form>
+        </div>
+        <div class="panel">
+          <h3>What happens next?</h3>
+          <ul class="list"><li>Your details are checked before they are sent.</li><li>Your registration is saved in the gym's MySQL database.</li><li>Gym staff can follow up to confirm price, terms, availability, and start date.</li><li>Do not submit payment-card details or sensitive health information through this form.</li></ul>
+          <div class="notice"><strong>Privacy:</strong> Registration details are stored by the gym. Only authorized staff should access the database.</div>
+          <h3 style="margin-top:22px">Registrations received</h3><div id="registrationCount" class="muted">Loading registrations…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reminders" style="background:#101813">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Keep your routine</div><h2>Your workout reminders</h2></div><p>Add reminders for your workout time and essentials. Keep this page open to receive in-page alerts; browser notifications may require permission and may not work when the page is closed.</p></div>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Add a reminder</h3>
+          <form id="reminderForm">
+            <div class="form-grid">
+              <div class="field full"><label for="reminderTitle">Reminder</label><input id="reminderTitle" required maxlength="100" placeholder="Pack water bottle and gym shoes"></div>
+              <div class="field"><label for="reminderTime">Time</label><input id="reminderTime" type="time" required></div>
+              <div class="field"><label for="reminderDays">Repeat</label><select id="reminderDays"><option value="daily">Every day</option><option value="weekdays">Weekdays</option><option value="weekends">Weekends</option></select></div>
+              <div class="field full"><button class="btn" type="submit">Save reminder +</button></div>
+            </div>
+          </form>
+          <div class="actions"><button id="notifyBtn" class="btn secondary small" type="button">Enable browser notifications</button></div>
+          <p id="notificationStatus" class="hint">Reminders are checked while this page is open.</p>
+        </div>
+        <div class="panel">
+          <h3>Saved reminders</h3><div id="reminderList" class="reminder-list"><p class="empty">No reminders yet. Add one to get started.</p></div>
+          <div class="notice" style="margin-top:16px">Reminder ideas: “Leave for the gym”, “Pack water and towel”, “Eat a regular meal”, or “Prepare gym clothes”. Your needs and schedule may differ.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="container footer-row"><span>© <span id="year"></span> FitStart Gym — sample website template.</span><span>Replace sample branding, policies, facilities, and contact details before publishing.</span></div></footer>
+<script>
+  const $ = (id) => document.getElementById(id);
+  $('year').textContent = new Date().getFullYear();
+  $('menuBtn').addEventListener('click', () => $('navlinks').classList.toggle('open'));
+  document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => $('navlinks').classList.remove('open')));
+
+  const REM_KEY = 'fitstart_demo_reminders_v1';
+  const readStore = (key) => { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch { return []; } };
+  const writeStore = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+  const safe = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  async function updateRegistrationCount() {
+    const count = $('registrationCount');
+    try {
+      const response = await fetch('/api/registrations/count');
+      if (!response.ok) throw new Error('Could not load registrations.');
+      const data = await response.json();
+      count.textContent = `${data.count} registration${data.count === 1 ? '' : 's'} received.`;
+    } catch {
+      count.textContent = 'Registration totals are temporarily unavailable.';
+    }
+  }
+  $('registrationForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.reportValidity()) return;
+    const message = $('formMessage');
+    const submit = form.querySelector('button[type="submit"]');
+    const values = Object.fromEntries(new FormData(form).entries());
+    values.consent = $('consent').checked;
+    submit.disabled = true;
+    message.textContent = 'Sending your registration…';
+    message.className = 'hint';
+    try {
+      const response = await fetch('/api/registrations', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(values)
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Your registration could not be saved.');
+      message.textContent = 'Thanks! Your registration was saved. Gym staff can now follow up with you.';
+      message.className = 'success';
+      form.reset();
+      await updateRegistrationCount();
+    } catch (error) {
+      message.textContent = error.message || 'Could not reach the registration service. Please try again.';
+      message.className = 'error';
+    } finally {
+      submit.disabled = false;
+    }
+  });
+  updateRegistrationCount();
+
+  function renderReminders() {
+    const reminders = readStore(REM_KEY);
+    const list = $('reminderList');
+    if (!reminders.length) { list.innerHTML = '<p class="empty">No reminders yet. Add one to get started.</p>'; return; }
+    list.innerHTML = reminders.map((r, i) => `<div class="reminder-item"><div><strong>${safe(r.title)}</strong><small>${safe(r.time)} · ${safe(r.repeat)}</small></div><button class="delete" data-delete="${i}" type="button">Delete</button></div>`).join('');
+    list.querySelectorAll('[data-delete]').forEach(btn => btn.addEventListener('click', () => {
+      const current = readStore(REM_KEY); current.splice(Number(btn.dataset.delete), 1); writeStore(REM_KEY, current); renderReminders();
+    }));
+  }
+  $('reminderForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = $('reminderTitle').value.trim(), time = $('reminderTime').value, repeat = $('reminderDays').value;
+    if (!title || !time) return;
+    const reminders = readStore(REM_KEY); reminders.push({title, time, repeat, lastShown:''}); writeStore(REM_KEY, reminders);
+    e.currentTarget.reset(); renderReminders();
+  });
+  $('notifyBtn').addEventListener('click', async () => {
+    if (!('Notification' in window)) { $('notificationStatus').textContent = 'This browser does not support notifications. Keep the page open for in-page alerts.'; return; }
+    try {
+      const permission = await Notification.requestPermission();
+      $('notificationStatus').textContent = permission === 'granted' ? 'Notifications enabled. Keep this page open for reminder checks.' : 'Notifications were not enabled. In-page reminders can still appear while this page is open.';
+    } catch { $('notificationStatus').textContent = 'Could not enable notifications in this browser.'; }
+  });
+  function checkReminders() {
+    const now = new Date(), time = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+    const day = now.getDay(), today = now.toISOString().slice(0,10);
+    const reminders = readStore(REM_KEY); let changed = false;
+    reminders.forEach(r => {
+      const dayMatches = r.repeat === 'daily' || (r.repeat === 'weekdays' && day >= 1 && day <= 5) || (r.repeat === 'weekends' && (day === 0 || day === 6));
+      if (r.time === time && dayMatches && r.lastShown !== today) {
+        alert(`FitStart reminder: ${r.title}`);
+        if ('Notification' in window && Notification.permission === 'granted') new Notification('FitStart workout reminder', {body:r.title});
+        r.lastShown = today; changed = true;
+      }
+    });
+    if (changed) writeStore(REM_KEY, reminders);
+  }
+  renderReminders();
+  setInterval(checkReminders, 15000);
+</script>
+</body>
+</html>
