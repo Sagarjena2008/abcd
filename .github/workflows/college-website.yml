@@ -1,0 +1,44 @@
+
+name: College Website Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  check-website:
+    name: Check College Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Check Python Syntax
+        run: python -m compileall -q .
+
+      - name: Verify Website Files
+        run: |
+          test -f app.py
+          test -f index.html
+          echo "College website files found."
+
+      - name: Workflow Completed
+        run: echo "College website checks completed successfully!"
